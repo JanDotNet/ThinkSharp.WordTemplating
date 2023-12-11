@@ -54,7 +54,7 @@ The library is basically, one class that can be copied and modified if needed. H
           public override string ToString() => $"{FirstName} {LastName}";
         }
 
-Placeholders in Word have the pattern "<name:format>". For defaul type (DateTime, int, double, ...) .Net conventions for the format will be used. Hoiowever, it is possible to register custom converter that evaluates custom format strings.
+Placeholders in Word have the pattern "\<name:format\>". For common types (DateTime, int, double, ...) .Net conventions for the format will be used. However, it is possible to register custom converters that evaluate custom format strings.
 
 The code converting the following docx template
 
