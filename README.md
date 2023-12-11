@@ -17,46 +17,53 @@ The library is basically, one class that can be copied and modified if needed. H
       
 ## Usage
 
-  var replacements = new Dictionary<string, object>(StringComparer.InvariantCultureIgnoreCase);
-  
-  replacements.Add("Replacement1", "Text For Replacement1");
-  replacements.Add("Replacement2", "Text For Replacement2");
-  replacements.Add("MyInt", 5);
-  replacements.Add("MyDate", DateTime.Now);
-  replacements.Add("MyDouble", Math.PI);
-  replacements.Add("MyBoolean", true);
-  replacements.Add("MyDateTimeOffset", DateTimeOffset.Now);
-  replacements.Add("CustomType", new CustomType { FirstName = "Hugo", LastName = "Boss" } );
-  replacements.Add("CustomTypeNoConverter", new CustomTypeNoConverter { FirstName = "Hugo", LastName = "Boss" });
-  
-  var engine = new TemplateEngine();
-  
-  // add custom converters (overwrites default converts)
-  engine.AddReplacementConverter<bool>((val, format) => format == "YesNo" ? (val ? "Yes" : "No") : val.ToString());
-  engine.AddReplacementConverter<CustomType>((val, format) => format == "LastFirst" ? $"{val.LastName}, {val.FirstName}" : val.ToString());
-  
-  File.Copy(@"Data\Test.docx", @"Data\Test_Replaced.docx", true);
-  
-  engine.ReplaceTemplate(@"Data\Test_Replaced.docx", replacements);
-  
-  public class CustomType
-  {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public override string ToString() => $"{FirstName} {LastName}";
-  }
-  
-  public class CustomTypeNoConverter
-  {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    public override string ToString() => $"{FirstName} {LastName}";
-  }
+        var replacements = new Dictionary<string, object>(StringComparer.InvariantCultureIgnoreCase);
+        
+        replacements.Add("Replacement1", "Text For Replacement1");
+        replacements.Add("Replacement2", "Text For Replacement2");
+        replacements.Add("MyInt", 5);
+        replacements.Add("MyDate", DateTime.Now);
+        replacements.Add("MyDouble", Math.PI);
+        replacements.Add("MyBoolean", true);
+        replacements.Add("MyDateTimeOffset", DateTimeOffset.Now);
+        replacements.Add("CustomType", new CustomType { FirstName = "Hugo", LastName = "Boss" } );
+        replacements.Add("CustomTypeNoConverter", new CustomTypeNoConverter { FirstName = "Hugo", LastName = "Boss" });
+        
+        // add custom converters (overwrites default converts)
+        engine.AddReplacementConverter<bool>((val, format) => format == "YesNo" ? (val ? "Yes" : "No") : val.ToString());
+        engine.AddReplacementConverter<CustomType>((val, format) => format == "LastFirst" ? $"{val.LastName}, {val.FirstName}" : val.ToString());
+        
+        var engine = new TemplateEngine();
+        engine.ReplaceTemplate(@"Data\Test.docx", replacements);
+        
+        public class CustomType
+        {
+          public string FirstName { get; set; }
+          public string LastName { get; set; }
+          public override string ToString() => $"{FirstName} {LastName}";
+        }
+        
+        public class CustomTypeNoConverter
+        {
+          public string FirstName { get; set; }
+          public string LastName { get; set; }
+          public override string ToString() => $"{FirstName} {LastName}";
+        }
 
+The code converting the follwoing docx template
+
+![grafik](https://github.com/JanDotNet/ThinkSharp.WordTemplating/assets/21179870/7fd8b37f-d766-4022-b72b-8ab2a1b78f2b)
+
+to the that one:
+
+![grafik](https://github.com/JanDotNet/ThinkSharp.WordTemplating/assets/21179870/b61912d1-b3f6-4a38-8fb5-00b7ddc28b29)
 
 ## License
 
 ThinkSharp.WordTemplating is released under [The MIT license (MIT)](LICENSE.TXT)
+
+
+
 
 ## Versioning
 
