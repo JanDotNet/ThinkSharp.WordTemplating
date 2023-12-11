@@ -6,7 +6,25 @@
     <Description>Lightweight templating engine for OpenXml (docx) documents with simple replacement capabilities.</Description>
     <Copyright>MIT</Copyright>
     <PackageProjectUrl>https://github.com/JanDotNet/ThinkSharp.WordTemplating</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/JanDotNet/ThinkSharp.WordTemplating.git</RepositoryUrl>
+    <PackageTags>Word;Replace;Template</PackageTags>
+    <PackageReleaseNotes>1.0.0 Initial Version</PackageReleaseNotes>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Jan-Niklas Schäfer</Authors>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="DocumentFormat.OpenXml" Version="3.0.0" />
