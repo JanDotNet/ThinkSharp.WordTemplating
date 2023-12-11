@@ -34,6 +34,10 @@ The library is basically, one class that can be copied and modified if needed. H
         engine.AddReplacementConverter<CustomType>((val, format) => format == "LastFirst" ? $"{val.LastName}, {val.FirstName}" : val.ToString());
         
         var engine = new TemplateEngine();
+        // optional: change culture for value conversation. Default is "en-EN"
+        // engine.Culture = new CultureInfo("de-DE")
+        // optional: change the value for missing values in replacement dicationary. Default ist: NoReplacementValueAvailable
+        // engone.NoReplacementAvailableValue = ""
         engine.ReplaceTemplate(@"Data\Test.docx", replacements);
         
         public class CustomType
@@ -50,7 +54,9 @@ The library is basically, one class that can be copied and modified if needed. H
           public override string ToString() => $"{FirstName} {LastName}";
         }
 
-The code converting the follwoing docx template
+Placeholders in Word have the pattern "<name:format>". For defaul type (DateTime, int, double, ...) .Net conventions for the format will be used. Hoiowever, it is possible to register custom converter that evaluates custom format strings.
+
+The code converting the following docx template
 
 ![grafik](https://github.com/JanDotNet/ThinkSharp.WordTemplating/assets/21179870/7fd8b37f-d766-4022-b72b-8ab2a1b78f2b)
 
