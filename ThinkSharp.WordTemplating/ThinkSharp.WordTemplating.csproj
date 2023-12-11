@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Title>ThinkSharp.WordTemplating</Title>
+    <Description>Lightweight templating engine for OpenXml (docx) documents with simple replacement capabilities.</Description>
+    <Copyright>MIT</Copyright>
+    <PackageProjectUrl>https://github.com/JanDotNet/ThinkSharp.WordTemplating</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="3.0.0" />
+  </ItemGroup>
+
+</Project>
